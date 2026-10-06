@@ -49,21 +49,61 @@ sites:
   #   maxResponseTime: 15000
 
 status-website:
-  # Without a custom domain the page is at
-  # https://bardinator.github.io/my-ohana-status/
+  # --- Address: keep exactly ONE of the two blocks below active. ---
+  # A) GitHub's address, https://bardinator.github.io/my-ohana-status/
   baseUrl: /my-ohana-status
-  # For status.myohana.co.uk instead: delete baseUrl above, uncomment cname,
-  # and add a CNAME record status → bardinator.github.io at the DNS provider.
+  # B) Your own address. Delete the baseUrl line above, uncomment cname, add a
+  #    DNS record CNAME status -> bardinator.github.io, and enter the same
+  #    domain under Settings -> Pages -> Custom domain.
   # cname: status.myohana.co.uk
+
   name: My Ohana status
-  logoUrl: https://www.myohana.co.uk/icon.png
-  introTitle: "**My Ohana** website status"
+  logoUrl: https://www.myohana.co.uk/assets/brand/primary-logo.png
+  hideNavTitle: true
+  favicon: https://www.myohana.co.uk/icon.png
+  introTitle: "Is everything working?"
   introMessage: >-
-    Live checks of myohana.co.uk every five minutes: the website, enquiries
-    reaching the CRM, the content system and nursery pages. If something here
-    is red, families may not be able to enquire, so call the nursery directly.
+    Live checks of the My Ohana website every five minutes: the site itself,
+    enquiries reaching our CRM, the content system and the nursery pages.
+    If something here is red, families may not be able to enquire online, so
+    please call the nursery directly.
   navbar:
     - title: Status
       href: /
-    - title: myohana.co.uk
+    - title: Back to myohana.co.uk
       href: https://www.myohana.co.uk
+
+  # Look and feel: the My Ohana site's own colours and fonts
+  # (src/app/globals.css), on top of Upptime's light theme.
+  theme: light
+  links:
+    - rel: preconnect
+      href: https://fonts.googleapis.com
+    - rel: stylesheet
+      href: https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap
+  css: >-
+    :root{--body-background-color:#f8f3ee;--body-text-color:#303636;--card-background-color:#ffffff;--card-border-color:#e2dcd4;--nav-background-color:#ffffff;--nav-border-bottom-color:#e2dcd4;--nav-current-border-bottom-color:#f0936f;--up-border-left-color:#757931;--tag-up-background-color:#757931;--degraded-border-left-color:#b0632e;--tag-degraded-background-color:#b0632e;--change-background-color:#b0632e;--down-border-left-color:#a8321f;--down-background-color:#fbeae6;--tag-down-background-color:#a8321f;--tag-color:#ffffff;--error-button-border-color:#964f24;--error-button-background-color:#b0632e;--error-button-color:#ffffff;--submit-button-border-color:#964f24;--submit-button-background-color:#b0632e;--submit-button-color:#ffffff}
+    body{font-family:Quicksand,system-ui,sans-serif;font-weight:500;line-height:1.6}
+    h1,h2,h3,h4{font-family:"Baloo 2",Quicksand,system-ui,sans-serif;font-weight:600;color:#303636}
+    h1{font-size:2.4rem;line-height:1.15} h2{font-size:1.6rem} h3{opacity:1;color:#5e625d}
+    .container{max-width:880px;padding:0 1rem}
+    nav{background:#ffffff;padding:.75rem 1rem;font-weight:600}
+    nav .logo img{height:48px;width:auto}
+    nav a{text-decoration:none;color:#303636}
+    nav a:hover{color:#5f6228}
+    [aria-current]{border-bottom:3px solid var(--nav-current-border-bottom-color)}
+    article{border-radius:16px;border-left-width:6px !important;padding:1.1rem 1.4rem;box-shadow:0 1px 2px rgba(48,54,54,.06),0 4px 14px rgba(48,54,54,.05)}
+    article + article{margin-top:.75rem}
+    .tag{border-radius:999px;font-weight:700;letter-spacing:.02em;padding:.3rem .7rem}
+    a{color:#5f6228} a:hover{color:#303636}
+    footer{color:#5e625d;font-size:.9rem;text-align:center}
+
+
+# Wording (replaces Upptime's own labels). Top level, not under status-website.
+i18n:
+  footer: "My Ohana · [myohana.co.uk](https://www.myohana.co.uk) · these checks run on GitHub, separately from the website"
+  allSystemsOperational: "Everything is working"
+  liveStatus: "Live status"
+  activeIncidents: "Current problems"
+  pastIncidents: "Past problems"
+  degraded: "Slow"
