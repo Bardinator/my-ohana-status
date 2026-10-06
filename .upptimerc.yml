@@ -69,9 +69,9 @@ status-website:
     please call the nursery directly.
   navbar:
     - title: Status
-      href: /
-    - title: Back to myohana.co.uk
       href: https://bardinator.github.io/my-ohana-status/
+    - title: Back to myohana.co.uk
+      href: https://www.myohana.co.uk/
 
   # Look and feel: the My Ohana site's own colours and fonts
   # (src/app/globals.css), on top of Upptime's light theme.
