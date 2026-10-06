@@ -1,31 +1,69 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Upptime configuration for the My Ohana status page.
+#
+# This file is a copy for the record. The live one is `.upptimerc.yml` in
+# the separate Bardinator/my-ohana-status repository, which runs the checks
+# on GitHub every five minutes, completely apart from Vercel, so the page
+# and the alerts keep working when the website is down. Setup steps:
+# status/README.md.
+#
+# A check is "down" when it does not answer 200 (or the listed codes) within
+# the time limit. Every check is a plain GET: nothing is written anywhere.
+
+owner: Bardinator
+repo: my-ohana-status
+
+# Who GitHub notifies when a check goes down (an issue is opened, assigned
+# to them, and closed again on recovery).
+assignees:
+  - Bardinator
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  # Is the site up at all: Vercel, the domain and the home page.
+  - name: Website
+    url: https://www.myohana.co.uk
+    maxResponseTime: 10000
+
+  # Is everything behind it connected: the site's own health check reads
+  # Sanity (content), works out where enquiries go (and that email can be
+  # sent where they go by email), asks HighLevel for the enquiry pipeline,
+  # and, once online booking is on, asks a House calendar for free slots.
+  # It answers 503 when any of those fail.
+  - name: Enquiries, CRM & content
+    url: https://www.myohana.co.uk/api/health
+    maxResponseTime: 20000
+
+  # The one nursery template rendering from Sanity.
+  - name: Nursery pages
+    url: https://www.myohana.co.uk/nurseries
+    maxResponseTime: 10000
+
+  # Where the team edits the site.
+  - name: Sanity Studio
+    url: https://www.myohana.co.uk/studio
+    maxResponseTime: 15000
+
+  # Staging: uncomment once it has a fixed address that is not behind
+  # Vercel's login (a protected preview answers 401, which says nothing).
+  # - name: Staging
+  #   url: https://myohana-staging.vercel.app
+  #   maxResponseTime: 15000
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # Without a custom domain the page is at
+  # https://bardinator.github.io/my-ohana-status/
+  baseUrl: /my-ohana-status
+  # For status.myohana.co.uk instead: delete baseUrl above, uncomment cname,
+  # and add a CNAME record status → bardinator.github.io at the DNS provider.
+  # cname: status.myohana.co.uk
+  name: My Ohana status
+  logoUrl: https://www.myohana.co.uk/icon.png
+  introTitle: "**My Ohana** website status"
+  introMessage: >-
+    Live checks of myohana.co.uk every five minutes: the website, enquiries
+    reaching the CRM, the content system and nursery pages. If something here
+    is red, families may not be able to enquire, so call the nursery directly.
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: myohana.co.uk
+      href: https://www.myohana.co.uk
