@@ -50,12 +50,11 @@ sites:
 
 status-website:
   # --- Address: keep exactly ONE of the two blocks below active. ---
-  # A) GitHub's address, https://bardinator.github.io/my-ohana-status/
-  baseUrl: /my-ohana-status
-  # B) Your own address. Delete the baseUrl line above, uncomment cname, add a
-  #    DNS record CNAME status -> bardinator.github.io, and enter the same
-  #    domain under Settings -> Pages -> Custom domain.
-  # cname: status.myohana.co.uk
+  # In use: status.myohana.co.uk (Cloudflare record CNAME status ->
+  # bardinator.github.io, DNS only; same domain under Settings -> Pages ->
+  # Custom domain). No baseUrl with a custom domain: the page is served from
+  # the root, and a baseUrl would send its scripts to a path that 404s.
+  cname: status.myohana.co.uk
 
   name: My Ohana status
   logoUrl: https://www.myohana.co.uk/assets/brand/primary-logo.png
@@ -69,9 +68,9 @@ status-website:
     please call the nursery directly.
   navbar:
     - title: Status
-      href: /
+      href: https://status.myohana.co.uk/
     - title: Back to myohana.co.uk
-      href: https://www.myohana.co.uk/
+      href: https://www.myohana.co.uk
 
   # Look and feel: the My Ohana site's own colours and fonts
   # (src/app/globals.css), on top of Upptime's light theme.
