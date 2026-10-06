@@ -69,7 +69,7 @@ status-website:
     please call the nursery directly.
   navbar:
     - title: Status
-      href: https://bardinator.github.io/my-ohana-status/
+      href: /
     - title: Back to myohana.co.uk
       href: https://www.myohana.co.uk/
 
