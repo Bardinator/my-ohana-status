@@ -71,7 +71,7 @@ status-website:
     - title: Status
       href: /
     - title: Back to myohana.co.uk
-      href: https://$OWNER.github.io/$REPO/
+      href: https://bardinator.github.io/my-ohana-status/
 
   # Look and feel: the My Ohana site's own colours and fonts
   # (src/app/globals.css), on top of Upptime's light theme.
